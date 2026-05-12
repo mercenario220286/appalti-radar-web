@@ -1,1098 +1,1575 @@
-"use client";
-
-import React from "react";
-
-const features = [
-  {
-    n: "01",
-    title: "Monitoraggio live",
-    text: "Il sistema intercetta nuove gare pubbliche e aggiornamenti operativi dalle fonti monitorate.",
-  },
-  {
-    n: "02",
-    title: "Analisi intelligence",
-    text: "Ogni gara viene letta contro profilo aziendale, storico, categoria, territorio e contesto competitivo.",
-  },
-  {
-    n: "03",
-    title: "Dossier operativo",
-    text: "Le opportunita rilevanti diventano dossier consultabili, con sintesi, scoring, mercato e risorse.",
-  },
-  {
-    n: "04",
-    title: "Alert mirati",
-    text: "L'ufficio gare riceve solo segnalazioni utili, gia pesate e pronte per una prima valutazione.",
-  },
-];
-
-const cards = [
-  {
-    title: "Alert Telegram",
-    subtitle: "Segnalazioni compatte, rapide e leggibili da mobile.",
-    image: "/landing/telegram-alert.jpg",
-  },
-  {
-    title: "Dossier gara",
-    subtitle: "Pagina dinamica con priorita, dati chiave e lettura operativa.",
-    image: "/landing/mobile-dossier.jpg",
-  },
-  {
-    title: "Report PDF",
-    subtitle: "Snapshot enterprise scaricabile e condivisibile internamente.",
-    image: "/landing/documenti.jpg",
-  },
-];
-
-const stats = [
-  ["Radar", "Monitoraggio continuo"],
-  ["DNA", "Profilo operativo aziendale"],
-  ["Score", "Priorita gara"],
-  ["Dossier", "Decisione rapida"],
-];
-
 export default function LandingPage() {
   return (
-    <main className="page">
-      <div className="noise" />
-
-      <header className="nav">
-        <a className="brand" href="/">
-          <img src="/appalti-gara-logo.png" alt="Appalti Radar" />
-          <span>Appalti Radar</span>
+    <main className="ar-page">
+      <header className="ar-nav">
+        <a className="ar-brand" href="/">
+          <div className="ar-logo-slot">
+            <span>AR</span>
+          </div>
+          <div>
+            <strong>APPALTI RADAR</strong>
+            <small>Procurement Intelligence</small>
+          </div>
         </a>
 
-        <nav className="links">
-          <a href="#funzionalita">Funzionalita</a>
-          <a href="#flusso">Come funziona</a>
-          <a href="#dossier">Dossier intelligence</a>
-          <a href="#vantaggi">Vantaggi</a>
+        <nav className="ar-menu">
+          <a href="#prodotto">Prodotto</a>
+          <a href="#funziona">Funzionalita</a>
+          <a href="#dossier">Dossier</a>
+          <a href="#aziende">Aziende</a>
           <a href="#contatti">Contatti</a>
         </nav>
 
-        <a className="navCta" href="#contatti">
+        <a className="ar-nav-cta" href="#contatti">
           Richiedi accesso
-          <span>lock</span>
         </a>
       </header>
 
-      <section className="hero">
-        <div className="heroText">
-          <div className="eyebrow">Monitoraggio live · dati reali · alert mirati</div>
+      <section className="ar-hero">
+        <div className="ar-hero-glow ar-hero-glow-one" />
+        <div className="ar-hero-glow ar-hero-glow-two" />
+
+        <div className="ar-hero-content">
+          <p className="ar-kicker">PROCUREMENT INTELLIGENCE</p>
 
           <h1>
-            Procurement intelligence per{" "}
-            <span>lavori pubblici.</span>
+            Trasformiamo i dati pubblici in{" "}
+            <span>opportunita concrete.</span>
           </h1>
 
-          <p>
-            Appalti Radar monitora le opportunita pubbliche, seleziona le gare
-            coerenti con il profilo operativo dell'impresa e trasforma i dati in
-            alert, dossier e report pronti per l'ufficio gare.
+          <p className="ar-lead">
+            Appalti Radar monitora le nuove opportunita pubbliche, le analizza
+            in profondita e porta all'ufficio gare solo le occasioni realmente
+            coerenti con il profilo aziendale.
           </p>
 
-          <div className="heroActions">
-            <a href="#contatti" className="primaryBtn">
-              Richiedi accesso al radar operativo
+          <div className="ar-hero-actions">
+            <a className="ar-btn ar-btn-primary" href="#contatti">
+              Richiedi accesso
             </a>
-            <a href="#dossier" className="secondaryBtn">
-              Guarda il flusso reale
+            <a className="ar-btn ar-btn-secondary" href="#dossier">
+              Guarda il dossier
             </a>
           </div>
 
-          <div className="trust">
-            <span />
-            Accesso riservato a imprese qualificate
-          </div>
-        </div>
-
-        <div className="heroVisual">
-          <div className="monitor">
-            <div className="monitorTop">
-              <div>
-                <strong>IMPRESIT LAVORI SPA</strong>
-                <small>Dossier intelligence gara</small>
-              </div>
-              <div className="live">LIVE</div>
+          <div className="ar-trust-row">
+            <div>
+              <strong>Radar live</strong>
+              <span>Nuove gare rilevanti</span>
             </div>
-
-            <div className="tenderHead">
-              <div>
-                <small>ANAS - SOCIETA' PER AZIONI</small>
-                <h3>Gara rilevata dal sistema</h3>
-              </div>
-              <div className="score">
-                <b>70</b>
-                <span>FIT GARA</span>
-              </div>
+            <div>
+              <strong>Score operativo</strong>
+              <span>Priorita e fit aziendale</span>
             </div>
-
-            <div className="miniGrid">
-              <div><small>CIG</small><b>BB81DC887E</b></div>
-              <div><small>Regione</small><b>MOLISE</b></div>
-              <div><small>Categoria</small><b>OG 3</b></div>
-              <div><small>Importo</small><b>1.662.000 EUR</b></div>
-            </div>
-
-            <div className="intelGrid">
-              <div>
-                <h4>Motivi di rilevanza</h4>
-                <p>Categoria coerente con storico</p>
-                <p>Importo in fascia operativa</p>
-                <p>Procedura aperta</p>
-              </div>
-              <div>
-                <h4>Lettura mercato</h4>
-                <p>Scenario competitivo</p>
-                <p>Campione comparabile</p>
-                <p>Affidabilita alta</p>
-              </div>
-            </div>
-
-            <div className="pressure">
-              <div className="pressureTop">
-                <strong>Pressione ribassi</strong>
-                <span>competitiva</span>
-              </div>
-              <div className="bar">
-                <i />
-              </div>
+            <div>
+              <strong>Dossier dinamico</strong>
+              <span>Analisi pronta per decidere</span>
             </div>
           </div>
-
-          <div className="radarGlow" />
-        </div>
-      </section>
-
-      <section id="flusso" className="flow">
-        <div className="sectionHead">
-          <span>Il nostro flusso operativo</span>
-          <h2>Dai dati pubblici alle decisioni operative.</h2>
         </div>
 
-        <div className="steps">
-          {features.map((item) => (
-            <article className="step" key={item.n}>
-              <div className="stepIcon">{item.n}</div>
-              <h3>{item.title}</h3>
-              <p>{item.text}</p>
-            </article>
-          ))}
-        </div>
-      </section>
+        <div className="ar-hero-visual">
+          <div className="ar-dashboard-shell">
+            <div className="ar-window-bar">
+              <span />
+              <span />
+              <span />
+              <strong>APPALTI RADAR</strong>
+            </div>
 
-      <section id="dossier" className="proof">
-        <div className="sectionHead">
-          <span>Flusso reale</span>
-          <h2>Alert, pagina dossier e documentazione nello stesso ecosistema.</h2>
-        </div>
+            <div className="ar-dashboard-grid">
+              <aside className="ar-side-menu">
+                <span />
+                <span />
+                <span />
+                <span />
+              </aside>
 
-        <div className="proofGrid">
-          {cards.map((card) => (
-            <article className="proofCard" key={card.title}>
-              <div>
-                <h3>{card.title}</h3>
-                <p>{card.subtitle}</p>
-              </div>
-              <div className="phoneFrame">
-                <img src={card.image} alt={card.title} />
-              </div>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section id="funzionalita" className="radarSection">
-        <div className="radarPanel">
-          <div className="italyRadar">
-            <img src="/appalti-gara-logo.png" alt="Appalti Radar logo" />
-            <div className="rings" />
-          </div>
-
-          <div className="radarText">
-            <span>Copertura nazionale</span>
-            <h2>Un radar operativo costruito per leggere il mercato degli appalti.</h2>
-            <p>
-              Il sistema nasce per dare all'ufficio gare una lettura piu rapida
-              delle opportunita: non una lista generica di bandi, ma una selezione
-              ragionata, collegata a profilo aziendale, categorie, territori,
-              storico e pressione competitiva.
-            </p>
-
-            <div className="stats">
-              {stats.map(([a, b]) => (
-                <div key={a}>
-                  <strong>{a}</strong>
-                  <small>{b}</small>
+              <div className="ar-map-panel">
+                <div className="ar-panel-title">
+                  <small>Panoramica</small>
+                  <strong>Copertura nazionale</strong>
                 </div>
-              ))}
+
+                <div className="ar-italy-placeholder">
+                  <div className="ar-map-pulse ar-map-pulse-one" />
+                  <div className="ar-map-pulse ar-map-pulse-two" />
+                  <div className="ar-map-pulse ar-map-pulse-three" />
+                  <span>ITALIA</span>
+                </div>
+
+                <div className="ar-mini-chart">
+                  <i />
+                  <i />
+                  <i />
+                  <i />
+                  <i />
+                  <i />
+                  <i />
+                </div>
+              </div>
+
+              <div className="ar-opportunity-panel">
+                <div className="ar-panel-title">
+                  <small>Ultime opportunita</small>
+                  <strong>Shortlist operativa</strong>
+                </div>
+
+                <div className="ar-mini-alert">
+                  <b>Nuova opportunita rilevata</b>
+                  <span>Fit alto - lavori pubblici</span>
+                </div>
+                <div className="ar-mini-alert">
+                  <b>Dossier pronto</b>
+                  <span>Analisi, score e priorita</span>
+                </div>
+                <div className="ar-mini-alert">
+                  <b>Report esportabile</b>
+                  <span>PDF condivisibile</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      <section id="vantaggi" className="advantages">
-        <article>
-          <h3>Meno rumore</h3>
-          <p>Solo opportunita coerenti, prioritarie e leggibili rapidamente.</p>
-        </article>
-        <article>
-          <h3>Decisione piu veloce</h3>
-          <p>Ogni alert porta a un dossier con dati chiave e lettura operativa.</p>
-        </article>
-        <article>
-          <h3>Memoria aziendale</h3>
-          <p>Lo storico diventa un profilo di lettura per valutare nuove gare.</p>
-        </article>
-        <article>
-          <h3>Output condivisibile</h3>
-          <p>Telegram, pagina dinamica e PDF parlano la stessa lingua operativa.</p>
-        </article>
+      <section id="prodotto" className="ar-section ar-benefits">
+        <div className="ar-section-head ar-center">
+          <p className="ar-kicker">UN SISTEMA. TUTTO IL VANTAGGIO.</p>
+          <h2>Dal rumore del mercato alla decisione operativa.</h2>
+        </div>
+
+        <div className="ar-benefit-grid">
+          <article>
+            <div className="ar-icon">◎</div>
+            <h3>Monitoraggio continuo</h3>
+            <p>
+              Intercetta nuove opportunita pubbliche e le porta in un flusso
+              ordinato, leggibile e pronto per la valutazione.
+            </p>
+          </article>
+
+          <article>
+            <div className="ar-icon">◍</div>
+            <h3>Profilo aziendale intelligente</h3>
+            <p>
+              Legge categorie, territori, importi, pattern storici e coerenza
+              operativa rispetto al profilo dell'azienda.
+            </p>
+          </article>
+
+          <article>
+            <div className="ar-icon">✦</div>
+            <h3>Scoring proprietario</h3>
+            <p>
+              Ogni gara viene classificata con priorita, motivazioni e livello
+              di compatibilita commerciale.
+            </p>
+          </article>
+
+          <article>
+            <div className="ar-icon">▣</div>
+            <h3>Dossier dinamici</h3>
+            <p>
+              Ogni opportunita rilevante diventa una scheda operativa chiara,
+              consultabile e condivisibile.
+            </p>
+          </article>
+
+          <article>
+            <div className="ar-icon">➤</div>
+            <h3>Alert immediati</h3>
+            <p>
+              Le gare piu interessanti arrivano al team con sintesi, priorita e
+              collegamento al dossier completo.
+            </p>
+          </article>
+        </div>
       </section>
 
-      <section id="contatti" className="access">
-        <div>
-          <span>Accesso riservato</span>
-          <h2>Entra nel radar operativo.</h2>
+      <section id="funziona" className="ar-section ar-flow-section">
+        <div className="ar-flow-copy">
+          <p className="ar-kicker">COME FUNZIONA</p>
+          <h2>Dalla pubblicazione all'opportunita, in pochi passaggi.</h2>
           <p>
-            Il monitoraggio e riservato a imprese qualificate. Compila la richiesta:
-            verificheremo il profilo e attiveremo il canale operativo dedicato.
+            Il sistema lavora come un livello di intelligence sopra il mercato
+            pubblico: filtra, ordina, valuta e trasforma i dati in segnali
+            utili per l'ufficio gare.
           </p>
         </div>
 
-        <form>
-          <input placeholder="Azienda" />
-          <input placeholder="Nome e cognome" />
-          <input placeholder="Telefono" />
-          <input placeholder="Email aziendale" />
-          <input placeholder="Partita IVA" />
-          <input placeholder="Ruolo in azienda" />
-          <label>
-            <input type="checkbox" />
-            Autorizzo il trattamento dei dati secondo la Privacy Policy.
-          </label>
-          <button type="button">Richiedi accesso</button>
-        </form>
+        <div className="ar-flow">
+          <div>
+            <span>01</span>
+            <strong>Pubblicazione</strong>
+          </div>
+          <i />
+          <div>
+            <span>02</span>
+            <strong>Raccolta</strong>
+          </div>
+          <i />
+          <div>
+            <span>03</span>
+            <strong>Analisi</strong>
+          </div>
+          <i />
+          <div>
+            <span>04</span>
+            <strong>Score</strong>
+          </div>
+          <i />
+          <div>
+            <span>05</span>
+            <strong>Dossier</strong>
+          </div>
+          <i />
+          <div>
+            <span>06</span>
+            <strong>Alert</strong>
+          </div>
+        </div>
+
+        <div className="ar-phone-wrap">
+          <div className="ar-phone">
+            <div className="ar-phone-top" />
+            <div className="ar-phone-screen">
+              <small>Appalti Radar</small>
+              <div className="ar-message-card">
+                <b>Nuova opportunita rilevata</b>
+                <p>
+                  Gara compatibile con il profilo aziendale. Score alto,
+                  importo coerente, dossier pronto.
+                </p>
+                <button>Apri dossier completo</button>
+              </div>
+              <div className="ar-message-line" />
+              <div className="ar-message-line short" />
+            </div>
+          </div>
+        </div>
       </section>
 
-      <footer className="footer">
-        <div>
-          <img src="/appalti-gara-logo.png" alt="Appalti Radar" />
-          <p>Intelligence operativa per lavori pubblici.</p>
+      <section id="dossier" className="ar-section ar-dossier">
+        <div className="ar-dossier-copy">
+          <p className="ar-kicker">DOSSIER OPERATIVO</p>
+          <h2>Tutto cio che serve, gia organizzato.</h2>
+          <p>
+            La landing deve vendere il prodotto senza scoprire il motore. Qui
+            mostriamo il risultato: un dossier chiaro, serio e utile per chi
+            deve decidere se guardare una gara, approfondirla o scartarla.
+          </p>
+
+          <ul>
+            <li>Dati principali e dettagli tecnici</li>
+            <li>Score di compatibilita e priorita</li>
+            <li>Motivi del match con il profilo aziendale</li>
+            <li>Contesto competitivo e storico utile</li>
+            <li>Report PDF condivisibile</li>
+          </ul>
         </div>
 
-        <div>
-          <strong>Prodotto</strong>
-          <a href="#funzionalita">Funzionalita</a>
-          <a href="#flusso">Come funziona</a>
-          <a href="#dossier">Dossier intelligence</a>
+        <div className="ar-dossier-visual">
+          <div className="ar-card-mock ar-card-main">
+            <small>Dossier Gara</small>
+            <h3>Opportunita pubblica</h3>
+            <div className="ar-data-row">
+              <span>Score</span>
+              <strong>Alto</strong>
+            </div>
+            <div className="ar-data-row">
+              <span>Priorita</span>
+              <strong>Operativa</strong>
+            </div>
+            <div className="ar-data-row">
+              <span>Output</span>
+              <strong>Dossier + PDF</strong>
+            </div>
+            <div className="ar-ring">
+              <span>FIT</span>
+            </div>
+          </div>
+
+          <div className="ar-card-mock ar-card-pdf">
+            <small>APPALTI RADAR</small>
+            <h3>Report PDF</h3>
+            <p>Snapshot condivisibile per il team.</p>
+            <button>Scarica PDF</button>
+          </div>
+        </div>
+      </section>
+
+      <section className="ar-section ar-showcase">
+        <div className="ar-section-head">
+          <p className="ar-kicker">IMMAGINI PRODOTTO</p>
+          <h2>Spazi pronti per screenshot reali.</h2>
+          <p>
+            Qui inserirai dashboard, alert Telegram, dossier mobile e report
+            ufficiali. Gli slot sono gia calibrati per non rompere il layout.
+          </p>
         </div>
 
+        <div className="ar-showcase-grid">
+          <div className="ar-image-slot ar-image-large">
+            <div>
+              <strong>Dashboard desktop</strong>
+              <span>Inserisci: /dashboard.png</span>
+            </div>
+          </div>
+
+          <div className="ar-image-slot">
+            <div>
+              <strong>Alert Telegram</strong>
+              <span>Inserisci: /telegram.png</span>
+            </div>
+          </div>
+
+          <div className="ar-image-slot">
+            <div>
+              <strong>Dossier mobile</strong>
+              <span>Inserisci: /mobile-dossier.png</span>
+            </div>
+          </div>
+
+          <div className="ar-image-slot ar-image-wide">
+            <div>
+              <strong>Report PDF</strong>
+              <span>Inserisci: /pdf-report.png</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="aziende" className="ar-section ar-why">
         <div>
-          <strong>Risorse</strong>
-          <a href="#contatti">Contatti</a>
-          <a href="#vantaggi">Vantaggi</a>
+          <p className="ar-kicker">PERCHE APPALTI RADAR</p>
+          <h2>Piu opportunita. Meno tempo perso.</h2>
+          <p>
+            L'obiettivo non e sostituire l'ufficio gare. E dargli una macchina
+            di lettura piu veloce, ordinata e selettiva, capace di evidenziare
+            cio che merita attenzione.
+          </p>
+
+          <div className="ar-metrics">
+            <div>
+              <strong>Radar</strong>
+              <span>Monitoraggio continuo</span>
+            </div>
+            <div>
+              <strong>Priorita</strong>
+              <span>Focus sulle gare rilevanti</span>
+            </div>
+            <div>
+              <strong>Dossier</strong>
+              <span>Analisi pronta da leggere</span>
+            </div>
+            <div>
+              <strong>Team</strong>
+              <span>Condivisione immediata</span>
+            </div>
+          </div>
         </div>
 
-        <div>
-          <strong>Legale</strong>
-          <a>Privacy Policy</a>
-          <a>Termini di utilizzo</a>
+        <div className="ar-cta-card">
+          <div className="ar-city-glow" />
+          <p className="ar-kicker">ACCESSO RISERVATO</p>
+          <h2>Sei un'azienda?</h2>
+          <p>
+            Richiedi una valutazione preliminare e scopri se Appalti Radar puo
+            essere configurato sul tuo profilo operativo.
+          </p>
+          <a className="ar-btn ar-btn-primary" href="#contatti">
+            Richiedi accesso
+          </a>
+        </div>
+      </section>
+
+      <footer id="contatti" className="ar-footer">
+        <div className="ar-footer-brand">
+          <div className="ar-logo-slot small">
+            <span>AR</span>
+          </div>
+          <div>
+            <strong>APPALTI RADAR</strong>
+            <p>Procurement Intelligence per lavori pubblici.</p>
+          </div>
         </div>
 
-        <small>© 2026 Appalti Radar. Tutti i diritti riservati.</small>
+        <div className="ar-footer-cols">
+          <div>
+            <strong>Prodotto</strong>
+            <a href="#prodotto">Funzionalita</a>
+            <a href="#dossier">Dossier</a>
+            <a href="#funziona">Workflow</a>
+          </div>
+
+          <div>
+            <strong>Azienda</strong>
+            <a href="#aziende">Per imprese</a>
+            <a href="#contatti">Accesso</a>
+            <a href="#contatti">Contatti</a>
+          </div>
+
+          <div>
+            <strong>Contatti</strong>
+            <a href="mailto:info@appaltiradar.it">info@appaltiradar.it</a>
+            <a href="#contatti">Richiedi demo</a>
+            <a href="#contatti">Accesso riservato</a>
+          </div>
+        </div>
       </footer>
 
-      <style jsx>{`
-        .page {
+      <style>{`
+        * {
+          box-sizing: border-box;
+        }
+
+        html {
+          scroll-behavior: smooth;
+        }
+
+        body {
+          margin: 0;
+          background: #000;
+          color: #f6f7ff;
+        }
+
+        .ar-page {
           min-height: 100vh;
+          overflow-x: hidden;
           background:
-            radial-gradient(circle at 70% 10%, rgba(105, 44, 255, 0.28), transparent 34%),
-            radial-gradient(circle at 20% 0%, rgba(0, 184, 255, 0.18), transparent 30%),
-            linear-gradient(180deg, #030306 0%, #06070c 45%, #020204 100%);
-          color: #fff;
-          overflow: hidden;
+            radial-gradient(circle at 50% 0%, rgba(103, 69, 255, 0.22), transparent 34rem),
+            radial-gradient(circle at 90% 15%, rgba(0, 116, 255, 0.14), transparent 30rem),
+            linear-gradient(180deg, #000 0%, #02030a 42%, #000 100%);
           font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
         }
 
-        .noise {
-          pointer-events: none;
-          position: fixed;
-          inset: 0;
-          opacity: 0.18;
-          background-image:
-            linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
-          background-size: 52px 52px;
-          mask-image: linear-gradient(to bottom, #000, transparent 78%);
-        }
-
-        .nav {
+        .ar-nav {
+          width: min(1180px, calc(100% - 36px));
+          height: 82px;
+          margin: 0 auto;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          border-bottom: 1px solid rgba(255, 255, 255, 0.08);
           position: sticky;
           top: 0;
           z-index: 20;
-          height: 84px;
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          padding: 0 42px;
-          border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-          background: rgba(3, 3, 8, 0.74);
           backdrop-filter: blur(18px);
+          background: rgba(0, 0, 0, 0.58);
         }
 
-        .brand {
+        .ar-brand {
           display: flex;
           align-items: center;
-          gap: 14px;
+          gap: 12px;
           color: #fff;
           text-decoration: none;
-          text-transform: uppercase;
-          letter-spacing: 0.14em;
+          min-width: 190px;
+        }
+
+        .ar-logo-slot {
+          width: 52px;
+          height: 52px;
+          border-radius: 17px;
+          display: grid;
+          place-items: center;
+          background:
+            linear-gradient(145deg, rgba(118, 82, 255, 0.42), rgba(0, 117, 255, 0.14)),
+            rgba(255, 255, 255, 0.03);
+          border: 1px solid rgba(143, 121, 255, 0.38);
+          box-shadow: 0 0 34px rgba(103, 69, 255, 0.28);
+        }
+
+        .ar-logo-slot span {
+          font-weight: 900;
+          letter-spacing: -0.08em;
+          font-size: 18px;
+          color: #fff;
+        }
+
+        .ar-logo-slot.small {
+          width: 44px;
+          height: 44px;
+          border-radius: 14px;
+        }
+
+        .ar-brand strong {
+          display: block;
           font-size: 12px;
-          font-weight: 800;
+          letter-spacing: 0.12em;
         }
 
-        .brand img {
-          width: 72px;
-          height: 46px;
-          object-fit: contain;
-          filter: drop-shadow(0 0 18px rgba(108, 69, 255, 0.55));
+        .ar-brand small {
+          display: block;
+          margin-top: 3px;
+          color: rgba(255, 255, 255, 0.52);
+          font-size: 11px;
         }
 
-        .links {
+        .ar-menu {
           display: flex;
-          gap: 30px;
           align-items: center;
+          gap: 30px;
         }
 
-        .links a {
-          color: rgba(255,255,255,0.74);
+        .ar-menu a,
+        .ar-footer a {
+          color: rgba(255, 255, 255, 0.64);
           text-decoration: none;
           font-size: 13px;
-          font-weight: 650;
+          transition: 0.2s ease;
         }
 
-        .links a:hover {
+        .ar-menu a:hover,
+        .ar-footer a:hover {
           color: #fff;
         }
 
-        .navCta {
-          color: #fff;
-          text-decoration: none;
-          border: 1px solid rgba(168, 92, 255, 0.55);
-          padding: 13px 18px;
-          border-radius: 10px;
-          font-size: 12px;
-          font-weight: 850;
-          text-transform: uppercase;
-          letter-spacing: 0.05em;
-          background: rgba(104, 40, 255, 0.16);
-          box-shadow: 0 0 30px rgba(111, 39, 255, 0.18);
-        }
-
-        .hero {
-          max-width: 1320px;
-          margin: 0 auto;
-          padding: 96px 42px 70px;
-          display: grid;
-          grid-template-columns: 0.9fr 1.1fr;
-          gap: 58px;
-          align-items: center;
-        }
-
-        .eyebrow,
-        .sectionHead span,
-        .radarText span,
-        .access span {
-          display: inline-block;
-          color: #b879ff;
-          text-transform: uppercase;
-          letter-spacing: 0.12em;
-          font-size: 12px;
-          font-weight: 900;
-          margin-bottom: 16px;
-        }
-
-        h1 {
-          font-size: clamp(46px, 6vw, 86px);
-          line-height: 0.94;
-          letter-spacing: -0.075em;
-          margin: 0 0 28px;
-        }
-
-        h1 span {
-          display: block;
-          background: linear-gradient(90deg, #9b5cff, #39d5ff);
-          -webkit-background-clip: text;
-          color: transparent;
-        }
-
-        .heroText p {
-          color: rgba(255,255,255,0.72);
-          font-size: 18px;
-          line-height: 1.7;
-          max-width: 620px;
-          margin: 0;
-        }
-
-        .heroActions {
-          display: flex;
-          gap: 16px;
-          flex-wrap: wrap;
-          margin-top: 34px;
-        }
-
-        .primaryBtn,
-        .secondaryBtn {
+        .ar-nav-cta,
+        .ar-btn {
           display: inline-flex;
           align-items: center;
           justify-content: center;
-          min-height: 54px;
-          padding: 0 24px;
-          border-radius: 12px;
+          min-height: 44px;
+          padding: 0 20px;
+          border-radius: 14px;
           text-decoration: none;
           font-size: 13px;
-          font-weight: 900;
-          text-transform: uppercase;
-          letter-spacing: 0.04em;
+          font-weight: 800;
+          letter-spacing: -0.01em;
+          transition: 0.2s ease;
+          white-space: nowrap;
         }
 
-        .primaryBtn {
+        .ar-nav-cta,
+        .ar-btn-primary {
           color: #fff;
-          background: linear-gradient(135deg, #7938ff, #b442ff);
-          box-shadow: 0 14px 38px rgba(113, 51, 255, 0.35);
+          background: linear-gradient(135deg, #5f42ff, #8a5cff);
+          box-shadow: 0 0 34px rgba(103, 69, 255, 0.42);
         }
 
-        .secondaryBtn {
-          color: #d8c9ff;
-          border: 1px solid rgba(154, 103, 255, 0.35);
-          background: rgba(255,255,255,0.04);
+        .ar-btn-secondary {
+          color: #fff;
+          background: rgba(255, 255, 255, 0.05);
+          border: 1px solid rgba(255, 255, 255, 0.14);
         }
 
-        .trust {
-          margin-top: 24px;
+        .ar-nav-cta:hover,
+        .ar-btn:hover {
+          transform: translateY(-2px);
+          filter: brightness(1.08);
+        }
+
+        .ar-hero {
+          width: min(1180px, calc(100% - 36px));
+          margin: 0 auto;
+          min-height: calc(100vh - 82px);
+          display: grid;
+          grid-template-columns: 0.92fr 1.08fr;
+          gap: 52px;
+          align-items: center;
+          position: relative;
+          padding: 64px 0 70px;
+        }
+
+        .ar-hero-glow {
+          position: absolute;
+          pointer-events: none;
+          filter: blur(10px);
+          opacity: 0.8;
+        }
+
+        .ar-hero-glow-one {
+          width: 420px;
+          height: 420px;
+          left: -170px;
+          bottom: 10%;
+          background: radial-gradient(circle, rgba(93, 64, 255, 0.22), transparent 68%);
+        }
+
+        .ar-hero-glow-two {
+          width: 520px;
+          height: 520px;
+          right: -150px;
+          top: 8%;
+          background: radial-gradient(circle, rgba(20, 115, 255, 0.16), transparent 70%);
+        }
+
+        .ar-kicker {
+          margin: 0 0 14px;
+          color: #8a7dff;
+          font-size: 12px;
+          line-height: 1;
+          font-weight: 900;
+          letter-spacing: 0.14em;
+          text-transform: uppercase;
+        }
+
+        .ar-hero h1 {
+          margin: 0;
+          max-width: 630px;
+          font-size: clamp(46px, 6vw, 86px);
+          line-height: 0.93;
+          letter-spacing: -0.07em;
+        }
+
+        .ar-hero h1 span {
+          color: #7b63ff;
+          text-shadow: 0 0 44px rgba(123, 99, 255, 0.35);
+        }
+
+        .ar-lead {
+          margin: 26px 0 0;
+          max-width: 560px;
+          color: rgba(255, 255, 255, 0.68);
+          font-size: 18px;
+          line-height: 1.65;
+          letter-spacing: -0.02em;
+        }
+
+        .ar-hero-actions {
+          margin-top: 34px;
           display: flex;
           align-items: center;
-          gap: 10px;
-          color: rgba(255,255,255,0.62);
-          font-size: 14px;
+          gap: 14px;
+          flex-wrap: wrap;
         }
 
-        .trust span {
-          width: 22px;
-          height: 22px;
-          border-radius: 50%;
-          border: 1px solid rgba(120, 255, 183, 0.45);
-          box-shadow: 0 0 18px rgba(34, 255, 145, 0.24);
-        }
-
-        .heroVisual {
-          position: relative;
-          min-height: 530px;
+        .ar-trust-row {
           display: grid;
-          place-items: center;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 12px;
+          margin-top: 38px;
+          max-width: 620px;
         }
 
-        .monitor {
+        .ar-trust-row div {
+          padding: 15px;
+          border-radius: 18px;
+          background: rgba(255, 255, 255, 0.035);
+          border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .ar-trust-row strong {
+          display: block;
+          font-size: 13px;
+          color: #fff;
+        }
+
+        .ar-trust-row span {
+          display: block;
+          margin-top: 5px;
+          font-size: 12px;
+          line-height: 1.35;
+          color: rgba(255, 255, 255, 0.5);
+        }
+
+        .ar-hero-visual {
           position: relative;
           z-index: 2;
-          width: min(760px, 100%);
-          padding: 18px;
-          border: 1px solid rgba(166, 124, 255, 0.42);
-          border-radius: 18px;
-          background:
-            linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.025)),
-            rgba(4, 5, 10, 0.92);
-          box-shadow:
-            0 0 0 1px rgba(255,255,255,0.04) inset,
-            0 42px 90px rgba(0,0,0,0.72),
-            0 0 70px rgba(111, 67, 255, 0.24);
-          transform: perspective(1000px) rotateY(-6deg) rotateX(2deg);
         }
 
-        .monitorTop,
-        .tenderHead,
-        .pressureTop {
+        .ar-dashboard-shell {
+          min-height: 520px;
+          border-radius: 32px;
+          padding: 16px;
+          background:
+            linear-gradient(145deg, rgba(255,255,255,0.13), rgba(255,255,255,0.03)),
+            rgba(10, 12, 24, 0.72);
+          border: 1px solid rgba(255, 255, 255, 0.16);
+          box-shadow:
+            0 40px 120px rgba(0, 0, 0, 0.8),
+            0 0 80px rgba(91, 65, 255, 0.18);
+        }
+
+        .ar-window-bar {
+          height: 42px;
           display: flex;
           align-items: center;
-          justify-content: space-between;
-          gap: 20px;
+          gap: 8px;
+          padding: 0 10px 12px;
+          color: rgba(255, 255, 255, 0.68);
         }
 
-        .monitorTop {
-          padding-bottom: 14px;
-          border-bottom: 1px solid rgba(255,255,255,0.08);
-        }
-
-        .monitorTop strong {
-          display: block;
-          font-size: 14px;
-          letter-spacing: 0.05em;
-        }
-
-        .monitorTop small,
-        .miniGrid small {
-          color: rgba(255,255,255,0.48);
-          font-size: 11px;
-        }
-
-        .live {
-          color: #32ff99;
-          border: 1px solid rgba(50,255,153,0.35);
-          background: rgba(50,255,153,0.08);
-          padding: 8px 12px;
+        .ar-window-bar span {
+          width: 9px;
+          height: 9px;
           border-radius: 99px;
+          background: rgba(255, 255, 255, 0.22);
+        }
+
+        .ar-window-bar strong {
+          margin-left: 10px;
           font-size: 11px;
-          font-weight: 900;
+          letter-spacing: 0.14em;
         }
 
-        .tenderHead {
-          margin-top: 18px;
+        .ar-dashboard-grid {
+          min-height: 450px;
+          display: grid;
+          grid-template-columns: 58px 1fr 230px;
+          gap: 14px;
+        }
+
+        .ar-side-menu,
+        .ar-map-panel,
+        .ar-opportunity-panel,
+        .ar-phone-screen,
+        .ar-card-mock,
+        .ar-cta-card,
+        .ar-image-slot {
+          background:
+            linear-gradient(180deg, rgba(255, 255, 255, 0.075), rgba(255, 255, 255, 0.025)),
+            rgba(5, 7, 17, 0.88);
+          border: 1px solid rgba(255, 255, 255, 0.09);
+          box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+        }
+
+        .ar-side-menu {
+          border-radius: 22px;
+          padding: 18px 0;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 16px;
+        }
+
+        .ar-side-menu span {
+          width: 22px;
+          height: 22px;
+          border-radius: 8px;
+          border: 1px solid rgba(138, 92, 255, 0.45);
+          background: rgba(138, 92, 255, 0.12);
+        }
+
+        .ar-map-panel,
+        .ar-opportunity-panel {
+          border-radius: 24px;
           padding: 18px;
-          border-radius: 15px;
-          border: 1px solid rgba(137, 104, 255, 0.36);
-          background: rgba(95, 67, 255, 0.08);
+          overflow: hidden;
         }
 
-        .tenderHead h3 {
-          font-size: 30px;
-          margin: 4px 0 0;
+        .ar-panel-title small {
+          display: block;
+          color: rgba(255, 255, 255, 0.46);
+          font-size: 11px;
+          margin-bottom: 4px;
+        }
+
+        .ar-panel-title strong {
+          display: block;
+          font-size: 18px;
           letter-spacing: -0.04em;
         }
 
-        .tenderHead small {
-          color: rgba(255,255,255,0.64);
-          font-weight: 800;
-        }
-
-        .score {
-          width: 86px;
-          height: 86px;
-          border-radius: 50%;
-          border: 2px solid #00e978;
+        .ar-italy-placeholder {
+          height: 270px;
+          margin: 18px 0;
+          border-radius: 24px;
+          position: relative;
           display: grid;
           place-items: center;
+          overflow: hidden;
+          background:
+            radial-gradient(circle at 50% 45%, rgba(114, 85, 255, 0.38), transparent 28%),
+            radial-gradient(circle at 48% 52%, rgba(0, 119, 255, 0.22), transparent 42%),
+            rgba(255, 255, 255, 0.025);
+          border: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .ar-italy-placeholder:before {
+          content: "";
+          width: 130px;
+          height: 210px;
+          border-radius: 48% 36% 54% 44%;
+          border: 1px solid rgba(166, 151, 255, 0.6);
+          background:
+            linear-gradient(140deg, rgba(118, 82, 255, 0.28), rgba(0, 117, 255, 0.04));
+          transform: rotate(18deg);
+          filter: drop-shadow(0 0 26px rgba(123, 99, 255, 0.35));
+        }
+
+        .ar-italy-placeholder span {
+          position: absolute;
+          bottom: 20px;
+          color: rgba(255, 255, 255, 0.48);
+          font-size: 11px;
+          letter-spacing: 0.22em;
+        }
+
+        .ar-map-pulse {
+          position: absolute;
+          width: 7px;
+          height: 7px;
+          border-radius: 99px;
+          background: #8a7dff;
+          box-shadow: 0 0 24px #8a7dff;
+        }
+
+        .ar-map-pulse-one {
+          top: 34%;
+          left: 44%;
+        }
+
+        .ar-map-pulse-two {
+          top: 52%;
+          left: 53%;
+        }
+
+        .ar-map-pulse-three {
+          top: 63%;
+          left: 48%;
+        }
+
+        .ar-mini-chart {
+          height: 68px;
+          display: flex;
+          align-items: end;
+          gap: 8px;
+          padding: 10px;
+          border-radius: 18px;
+          background: rgba(255, 255, 255, 0.025);
+        }
+
+        .ar-mini-chart i {
+          flex: 1;
+          border-radius: 99px 99px 0 0;
+          background: linear-gradient(180deg, #755dff, rgba(117, 93, 255, 0.12));
+        }
+
+        .ar-mini-chart i:nth-child(1) { height: 22%; }
+        .ar-mini-chart i:nth-child(2) { height: 44%; }
+        .ar-mini-chart i:nth-child(3) { height: 36%; }
+        .ar-mini-chart i:nth-child(4) { height: 68%; }
+        .ar-mini-chart i:nth-child(5) { height: 46%; }
+        .ar-mini-chart i:nth-child(6) { height: 76%; }
+        .ar-mini-chart i:nth-child(7) { height: 58%; }
+
+        .ar-mini-alert {
+          margin-top: 14px;
+          padding: 14px;
+          border-radius: 18px;
+          background: rgba(255, 255, 255, 0.04);
+          border: 1px solid rgba(255, 255, 255, 0.07);
+        }
+
+        .ar-mini-alert b {
+          display: block;
+          font-size: 12px;
+          color: #fff;
+        }
+
+        .ar-mini-alert span {
+          display: block;
+          margin-top: 5px;
+          color: rgba(255, 255, 255, 0.48);
+          font-size: 11px;
+          line-height: 1.4;
+        }
+
+        .ar-section {
+          width: min(1180px, calc(100% - 36px));
+          margin: 0 auto;
+          padding: 86px 0;
+          border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .ar-section-head {
+          max-width: 690px;
+          margin-bottom: 34px;
+        }
+
+        .ar-center {
           text-align: center;
-          color: #20ff91;
+          margin-left: auto;
+          margin-right: auto;
         }
 
-        .score b {
-          display: block;
-          font-size: 28px;
-          line-height: 1;
+        .ar-section h2,
+        .ar-flow-copy h2,
+        .ar-dossier-copy h2,
+        .ar-why h2,
+        .ar-cta-card h2 {
+          margin: 0;
+          font-size: clamp(31px, 4vw, 52px);
+          line-height: 1.02;
+          letter-spacing: -0.055em;
         }
 
-        .score span {
-          font-size: 9px;
-          font-weight: 900;
+        .ar-section-head p,
+        .ar-flow-copy p,
+        .ar-dossier-copy p,
+        .ar-why p,
+        .ar-cta-card p {
+          color: rgba(255, 255, 255, 0.62);
+          line-height: 1.65;
+          font-size: 16px;
         }
 
-        .miniGrid {
+        .ar-benefit-grid {
           display: grid;
-          grid-template-columns: repeat(4, 1fr);
-          gap: 10px;
-          margin-top: 12px;
+          grid-template-columns: repeat(5, 1fr);
+          gap: 14px;
         }
 
-        .miniGrid div,
-        .intelGrid > div {
-          border: 1px solid rgba(255,255,255,0.11);
-          background: rgba(255,255,255,0.035);
-          border-radius: 12px;
-          padding: 13px;
+        .ar-benefit-grid article {
+          min-height: 230px;
+          padding: 24px;
+          border-radius: 26px;
+          background:
+            radial-gradient(circle at 50% 0%, rgba(111, 83, 255, 0.16), transparent 60%),
+            rgba(255, 255, 255, 0.035);
+          border: 1px solid rgba(255, 255, 255, 0.08);
         }
 
-        .miniGrid b {
-          display: block;
-          margin-top: 3px;
+        .ar-icon {
+          width: 52px;
+          height: 52px;
+          border-radius: 18px;
+          display: grid;
+          place-items: center;
+          margin-bottom: 22px;
+          color: #9f8fff;
+          font-size: 26px;
+          background: rgba(112, 82, 255, 0.12);
+          border: 1px solid rgba(138, 92, 255, 0.28);
+          box-shadow: 0 0 34px rgba(112, 82, 255, 0.18);
+        }
+
+        .ar-benefit-grid h3 {
+          margin: 0 0 10px;
+          font-size: 17px;
+          letter-spacing: -0.03em;
+        }
+
+        .ar-benefit-grid p {
+          margin: 0;
+          color: rgba(255, 255, 255, 0.55);
+          line-height: 1.55;
           font-size: 13px;
         }
 
-        .intelGrid {
+        .ar-flow-section {
           display: grid;
-          grid-template-columns: 1fr 1fr;
+          grid-template-columns: 1fr 350px;
+          gap: 46px;
+          align-items: center;
+        }
+
+        .ar-flow {
+          grid-column: 1 / 2;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
           gap: 12px;
-          margin-top: 12px;
+          padding: 24px;
+          border-radius: 30px;
+          background: rgba(255, 255, 255, 0.028);
+          border: 1px solid rgba(255, 255, 255, 0.08);
         }
 
-        .intelGrid h4 {
-          margin: 0 0 10px;
+        .ar-flow div {
+          text-align: center;
+          flex: 1;
+        }
+
+        .ar-flow span {
+          width: 48px;
+          height: 48px;
+          display: grid;
+          place-items: center;
+          margin: 0 auto 12px;
+          border-radius: 18px;
+          color: #9f8fff;
           font-size: 12px;
-          text-transform: uppercase;
-          letter-spacing: 0.08em;
+          font-weight: 900;
+          background: rgba(112, 82, 255, 0.13);
+          border: 1px solid rgba(138, 92, 255, 0.26);
         }
 
-        .intelGrid p {
-          margin: 7px 0;
-          color: rgba(255,255,255,0.74);
+        .ar-flow strong {
+          display: block;
+          color: rgba(255, 255, 255, 0.72);
           font-size: 12px;
-          font-weight: 700;
+          line-height: 1.3;
         }
 
-        .pressure {
-          margin-top: 12px;
-          padding: 15px;
-          border-radius: 14px;
-          background: rgba(255,255,255,0.035);
+        .ar-flow i {
+          width: 18px;
+          height: 1px;
+          background: rgba(138, 92, 255, 0.54);
+        }
+
+        .ar-phone-wrap {
+          grid-column: 2 / 3;
+          grid-row: 1 / 3;
+          display: flex;
+          justify-content: center;
+        }
+
+        .ar-phone {
+          width: 286px;
+          min-height: 560px;
+          border-radius: 42px;
+          padding: 13px;
+          background: linear-gradient(145deg, rgba(255,255,255,0.16), rgba(255,255,255,0.04));
+          border: 1px solid rgba(255, 255, 255, 0.16);
+          box-shadow: 0 34px 90px rgba(0, 0, 0, 0.7);
+        }
+
+        .ar-phone-top {
+          width: 84px;
+          height: 24px;
+          border-radius: 0 0 16px 16px;
+          background: #000;
+          margin: 0 auto -12px;
+          position: relative;
+          z-index: 2;
+        }
+
+        .ar-phone-screen {
+          min-height: 528px;
+          border-radius: 34px;
+          padding: 46px 18px 18px;
+        }
+
+        .ar-phone-screen small {
+          display: block;
+          color: rgba(255, 255, 255, 0.54);
+          font-size: 12px;
+          margin-bottom: 20px;
+        }
+
+        .ar-message-card {
+          padding: 17px;
+          border-radius: 20px;
+          background: rgba(255,255,255,0.055);
           border: 1px solid rgba(255,255,255,0.1);
         }
 
-        .pressureTop strong {
+        .ar-message-card b {
+          display: block;
           font-size: 14px;
-          text-transform: uppercase;
         }
 
-        .pressureTop span {
-          color: #ffc83d;
-          text-transform: uppercase;
-          font-size: 11px;
+        .ar-message-card p {
+          margin: 10px 0 14px;
+          color: rgba(255,255,255,0.56);
+          font-size: 12px;
+          line-height: 1.55;
+        }
+
+        .ar-message-card button,
+        .ar-card-pdf button {
+          width: 100%;
+          border: 0;
+          min-height: 38px;
+          border-radius: 12px;
+          color: #fff;
+          font-weight: 800;
+          background: linear-gradient(135deg, #5f42ff, #8a5cff);
+        }
+
+        .ar-message-line {
+          height: 12px;
+          margin-top: 16px;
+          border-radius: 99px;
+          background: rgba(255,255,255,0.08);
+        }
+
+        .ar-message-line.short {
+          width: 64%;
+        }
+
+        .ar-dossier {
+          display: grid;
+          grid-template-columns: 0.86fr 1.14fr;
+          gap: 56px;
+          align-items: center;
+        }
+
+        .ar-dossier-copy ul {
+          list-style: none;
+          padding: 0;
+          margin: 28px 0 0;
+          display: grid;
+          gap: 12px;
+        }
+
+        .ar-dossier-copy li {
+          color: rgba(255,255,255,0.72);
+          font-size: 15px;
+          position: relative;
+          padding-left: 28px;
+        }
+
+        .ar-dossier-copy li:before {
+          content: "✓";
+          position: absolute;
+          left: 0;
+          color: #8a7dff;
           font-weight: 900;
         }
 
-        .bar {
+        .ar-dossier-visual {
+          min-height: 430px;
           position: relative;
-          height: 10px;
-          border-radius: 99px;
-          margin-top: 18px;
-          background: linear-gradient(90deg, #00e978, #ffd43d 43%, #ff7a2f 70%, #ff366e);
-        }
-
-        .bar i {
-          position: absolute;
-          left: 30%;
-          top: -6px;
-          width: 2px;
-          height: 22px;
-          background: #fff;
-          box-shadow: 0 0 14px #fff;
-        }
-
-        .radarGlow {
-          position: absolute;
-          width: 520px;
-          height: 520px;
-          border-radius: 50%;
+          border-radius: 34px;
           background:
-            radial-gradient(circle, rgba(0, 211, 255, 0.22), transparent 55%),
-            conic-gradient(from 45deg, rgba(145, 75, 255, 0.28), rgba(0, 219, 255, 0.28), transparent, rgba(145, 75, 255, 0.28));
-          filter: blur(12px);
-          opacity: 0.82;
-        }
-
-        .flow,
-        .proof,
-        .radarSection,
-        .advantages,
-        .access,
-        .footer {
-          max-width: 1320px;
-          margin: 0 auto;
-          padding-left: 42px;
-          padding-right: 42px;
-        }
-
-        .sectionHead {
-          text-align: center;
-          margin-bottom: 42px;
-        }
-
-        .sectionHead h2,
-        .radarText h2,
-        .access h2 {
-          font-size: clamp(30px, 4vw, 52px);
-          line-height: 1.05;
-          letter-spacing: -0.055em;
-          margin: 0;
-        }
-
-        .steps {
-          display: grid;
-          grid-template-columns: repeat(4, 1fr);
-          gap: 18px;
-        }
-
-        .step {
-          padding: 28px;
-          border: 1px solid rgba(255,255,255,0.09);
-          border-radius: 20px;
-          background: rgba(255,255,255,0.035);
-          text-align: center;
-        }
-
-        .stepIcon {
-          width: 52px;
-          height: 52px;
-          margin: 0 auto 18px;
-          border-radius: 50%;
-          display: grid;
-          place-items: center;
-          color: #d7c2ff;
-          background: rgba(123, 73, 255, 0.16);
-          border: 1px solid rgba(161, 113, 255, 0.32);
-          font-weight: 950;
-        }
-
-        .step h3 {
-          margin: 0 0 10px;
-          font-size: 16px;
-          text-transform: uppercase;
-          letter-spacing: 0.05em;
-        }
-
-        .step p,
-        .proofCard p,
-        .radarText p,
-        .advantages p,
-        .access p {
-          color: rgba(255,255,255,0.66);
-          line-height: 1.65;
-          margin: 0;
-        }
-
-        .proof {
-          padding-top: 92px;
-        }
-
-        .proofGrid {
-          display: grid;
-          grid-template-columns: repeat(3, 1fr);
-          gap: 24px;
-        }
-
-        .proofCard {
-          min-height: 520px;
-          padding: 24px;
-          border-radius: 24px;
-          border: 1px solid rgba(151, 94, 255, 0.25);
-          background:
-            radial-gradient(circle at 50% 0%, rgba(119, 75, 255, 0.18), transparent 34%),
-            rgba(255,255,255,0.035);
-          display: flex;
-          flex-direction: column;
-          justify-content: space-between;
+            radial-gradient(circle at 55% 35%, rgba(119, 91, 255, 0.25), transparent 38%),
+            rgba(255,255,255,0.025);
+          border: 1px solid rgba(255,255,255,0.08);
           overflow: hidden;
         }
 
-        .proofCard h3 {
-          color: #c99dff;
-          text-transform: uppercase;
-          letter-spacing: 0.08em;
-          font-size: 16px;
-          margin: 0 0 8px;
+        .ar-dossier-visual:after {
+          content: "";
+          position: absolute;
+          left: -10%;
+          right: -10%;
+          bottom: 70px;
+          height: 2px;
+          background: linear-gradient(90deg, transparent, rgba(121, 93, 255, 0.8), transparent);
+          box-shadow: 0 0 34px rgba(121, 93, 255, 0.7);
         }
 
-        .phoneFrame {
-          margin: 24px auto 0;
-          width: min(280px, 100%);
-          height: 390px;
+        .ar-card-mock {
+          position: absolute;
           border-radius: 28px;
-          border: 1px solid rgba(255,255,255,0.16);
-          background: #050509;
-          overflow: hidden;
-          box-shadow: 0 28px 70px rgba(0,0,0,0.55);
+          padding: 24px;
         }
 
-        .phoneFrame img {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
+        .ar-card-main {
+          width: 330px;
+          min-height: 330px;
+          left: 64px;
+          top: 56px;
+          transform: rotate(-4deg);
+          z-index: 2;
+        }
+
+        .ar-card-pdf {
+          width: 220px;
+          min-height: 290px;
+          right: 70px;
+          top: 82px;
+          transform: rotate(3deg);
+          z-index: 3;
+          background: #f3f5ff;
+          color: #10131f;
+        }
+
+        .ar-card-mock small {
           display: block;
+          color: rgba(255,255,255,0.48);
+          font-size: 11px;
+          margin-bottom: 10px;
         }
 
-        .radarSection {
-          padding-top: 92px;
+        .ar-card-pdf small {
+          color: #5f42ff;
+          font-weight: 900;
         }
 
-        .radarPanel {
-          display: grid;
-          grid-template-columns: 0.85fr 1.15fr;
-          gap: 40px;
+        .ar-card-mock h3 {
+          margin: 0 0 20px;
+          font-size: 22px;
+          letter-spacing: -0.04em;
+        }
+
+        .ar-data-row {
+          display: flex;
           align-items: center;
-          padding: 42px;
-          border-radius: 30px;
-          border: 1px solid rgba(143, 91, 255, 0.28);
-          background:
-            radial-gradient(circle at 28% 35%, rgba(0, 207, 255, 0.16), transparent 30%),
-            radial-gradient(circle at 65% 0%, rgba(150, 72, 255, 0.2), transparent 34%),
-            rgba(255,255,255,0.035);
+          justify-content: space-between;
+          padding: 12px 0;
+          border-bottom: 1px solid rgba(255,255,255,0.08);
+          font-size: 13px;
         }
 
-        .italyRadar {
-          position: relative;
-          min-height: 420px;
+        .ar-data-row span {
+          color: rgba(255,255,255,0.48);
+        }
+
+        .ar-ring {
+          width: 76px;
+          height: 76px;
+          border-radius: 50%;
           display: grid;
           place-items: center;
+          margin: 28px 0 0 auto;
+          border: 7px solid rgba(138, 92, 255, 0.28);
+          border-top-color: #8a5cff;
         }
 
-        .italyRadar img {
-          position: relative;
-          z-index: 3;
-          width: min(360px, 80%);
-          filter: drop-shadow(0 0 40px rgba(57, 213, 255, 0.42));
+        .ar-ring span {
+          font-size: 12px;
+          font-weight: 900;
+          color: #fff;
         }
 
-        .rings,
-        .rings:before,
-        .rings:after {
-          position: absolute;
-          border-radius: 50%;
-          border: 1px solid rgba(87, 208, 255, 0.35);
+        .ar-card-pdf p {
+          font-size: 13px;
+          line-height: 1.5;
+          color: rgba(16, 19, 31, 0.62);
+          margin-bottom: 24px;
         }
 
-        .rings {
-          width: 360px;
-          height: 360px;
-          box-shadow: 0 0 80px rgba(116, 73, 255, 0.24);
-        }
-
-        .rings:before {
-          content: "";
-          inset: 44px;
-        }
-
-        .rings:after {
-          content: "";
-          inset: 88px;
-          border-color: rgba(178, 78, 255, 0.45);
-        }
-
-        .radarText p {
-          font-size: 17px;
-          margin-top: 20px;
-          max-width: 680px;
-        }
-
-        .stats {
+        .ar-showcase-grid {
           display: grid;
-          grid-template-columns: repeat(4, 1fr);
+          grid-template-columns: 1.4fr 1fr 1fr;
+          gap: 16px;
+        }
+
+        .ar-image-slot {
+          min-height: 250px;
+          border-radius: 30px;
+          position: relative;
+          overflow: hidden;
+          display: flex;
+          align-items: end;
+          padding: 22px;
+          background:
+            radial-gradient(circle at 50% 20%, rgba(115, 87, 255, 0.2), transparent 48%),
+            linear-gradient(145deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02)),
+            #050712;
+        }
+
+        .ar-image-slot:before {
+          content: "";
+          position: absolute;
+          inset: 18px;
+          border-radius: 22px;
+          border: 1px dashed rgba(255,255,255,0.16);
+          background:
+            linear-gradient(135deg, rgba(255,255,255,0.04), transparent);
+        }
+
+        .ar-image-slot div {
+          position: relative;
+          z-index: 2;
+        }
+
+        .ar-image-slot strong {
+          display: block;
+          font-size: 17px;
+          margin-bottom: 6px;
+        }
+
+        .ar-image-slot span {
+          display: block;
+          color: rgba(255,255,255,0.48);
+          font-size: 13px;
+        }
+
+        .ar-image-large {
+          grid-row: span 2;
+          min-height: 516px;
+        }
+
+        .ar-image-wide {
+          grid-column: span 2;
+        }
+
+        .ar-why {
+          display: grid;
+          grid-template-columns: 0.82fr 1.18fr;
+          gap: 46px;
+          align-items: stretch;
+        }
+
+        .ar-metrics {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
           gap: 12px;
           margin-top: 30px;
         }
 
-        .stats div {
+        .ar-metrics div {
           padding: 18px;
-          border-radius: 16px;
-          border: 1px solid rgba(255,255,255,0.1);
-          background: rgba(0,0,0,0.24);
-        }
-
-        .stats strong {
-          display: block;
-          font-size: 22px;
-          color: #fff;
-        }
-
-        .stats small {
-          color: rgba(255,255,255,0.58);
-        }
-
-        .advantages {
-          padding-top: 34px;
-          display: grid;
-          grid-template-columns: repeat(4, 1fr);
-          gap: 16px;
-        }
-
-        .advantages article {
-          padding: 24px;
           border-radius: 20px;
-          border: 1px solid rgba(255,255,255,0.09);
-          background: rgba(255,255,255,0.032);
+          background: rgba(255,255,255,0.035);
+          border: 1px solid rgba(255,255,255,0.08);
         }
 
-        .advantages h3 {
-          margin: 0 0 10px;
-          font-size: 18px;
+        .ar-metrics strong {
+          display: block;
+          font-size: 16px;
         }
 
-        .access {
-          margin-top: 80px;
-          padding-top: 32px;
-          padding-bottom: 32px;
-          display: grid;
-          grid-template-columns: 0.9fr 1.1fr;
-          gap: 34px;
-          align-items: center;
-          border: 1px solid rgba(143, 91, 255, 0.35);
-          border-radius: 24px;
-          background:
-            radial-gradient(circle at 100% 0%, rgba(132, 71, 255, 0.18), transparent 35%),
-            rgba(255,255,255,0.035);
+        .ar-metrics span {
+          display: block;
+          margin-top: 6px;
+          color: rgba(255,255,255,0.5);
+          font-size: 12px;
         }
 
-        form {
-          display: grid;
-          grid-template-columns: repeat(3, 1fr);
-          gap: 12px;
-        }
-
-        input {
-          min-height: 50px;
-          border-radius: 10px;
-          border: 1px solid rgba(255,255,255,0.12);
-          background: rgba(0,0,0,0.28);
-          color: #fff;
-          padding: 0 14px;
-          outline: none;
-        }
-
-        input::placeholder {
-          color: rgba(255,255,255,0.42);
-        }
-
-        label {
-          grid-column: span 2;
+        .ar-cta-card {
+          position: relative;
+          overflow: hidden;
+          min-height: 360px;
+          border-radius: 34px;
+          padding: 40px;
           display: flex;
-          align-items: center;
-          gap: 10px;
-          color: rgba(255,255,255,0.58);
-          font-size: 12px;
+          flex-direction: column;
+          justify-content: center;
         }
 
-        label input {
-          min-height: auto;
+        .ar-city-glow {
+          position: absolute;
+          inset: 0;
+          background:
+            linear-gradient(90deg, rgba(5,7,17,0.95), rgba(5,7,17,0.38)),
+            radial-gradient(circle at 78% 46%, rgba(126, 92, 255, 0.38), transparent 28%);
         }
 
-        button {
-          border: 0;
-          border-radius: 10px;
-          color: #fff;
-          background: linear-gradient(135deg, #7938ff, #b442ff);
-          font-weight: 900;
-          text-transform: uppercase;
-          cursor: pointer;
+        .ar-cta-card > *:not(.ar-city-glow) {
+          position: relative;
+          z-index: 2;
+          max-width: 460px;
         }
 
-        .footer {
-          padding-top: 54px;
-          padding-bottom: 50px;
-          display: grid;
-          grid-template-columns: 1.5fr 1fr 1fr 1fr auto;
-          gap: 34px;
-          align-items: start;
-          color: rgba(255,255,255,0.58);
+        .ar-footer {
+          width: min(1180px, calc(100% - 36px));
+          margin: 0 auto;
+          padding: 46px 0 54px;
+          border-top: 1px solid rgba(255,255,255,0.08);
+          display: flex;
+          justify-content: space-between;
+          gap: 40px;
         }
 
-        .footer img {
-          width: 86px;
-          height: auto;
-          object-fit: contain;
+        .ar-footer-brand {
+          display: flex;
+          gap: 14px;
+          max-width: 300px;
         }
 
-        .footer p {
-          margin: 12px 0 0;
-        }
-
-        .footer strong {
+        .ar-footer-brand strong {
           display: block;
-          color: #fff;
-          margin-bottom: 12px;
-          text-transform: uppercase;
-          font-size: 12px;
-          letter-spacing: 0.08em;
-        }
-
-        .footer a {
-          display: block;
-          color: rgba(255,255,255,0.58);
-          text-decoration: none;
-          margin: 7px 0;
           font-size: 13px;
+          letter-spacing: 0.12em;
         }
 
-        .footer small {
-          white-space: nowrap;
+        .ar-footer-brand p {
+          margin: 8px 0 0;
+          color: rgba(255,255,255,0.48);
+          font-size: 13px;
+          line-height: 1.5;
         }
 
-        @media (max-width: 980px) {
-          .nav {
-            padding: 0 20px;
-          }
+        .ar-footer-cols {
+          display: flex;
+          gap: 68px;
+        }
 
-          .links {
+        .ar-footer-cols div {
+          display: grid;
+          gap: 10px;
+          align-content: start;
+        }
+
+        .ar-footer-cols strong {
+          font-size: 12px;
+          text-transform: uppercase;
+          letter-spacing: 0.12em;
+        }
+
+        @media (max-width: 1050px) {
+          .ar-menu {
             display: none;
           }
 
-          .brand span {
-            display: none;
-          }
-
-          .hero {
+          .ar-hero,
+          .ar-flow-section,
+          .ar-dossier,
+          .ar-why {
             grid-template-columns: 1fr;
-            padding: 62px 20px 50px;
           }
 
-          .heroVisual {
+          .ar-hero {
             min-height: auto;
+            padding-top: 46px;
           }
 
-          .monitor {
-            transform: none;
+          .ar-dashboard-grid {
+            grid-template-columns: 52px 1fr;
           }
 
-          .steps,
-          .proofGrid,
-          .advantages,
-          .stats {
-            grid-template-columns: 1fr;
+          .ar-opportunity-panel {
+            grid-column: 1 / -1;
           }
 
-          .radarPanel,
-          .access {
-            grid-template-columns: 1fr;
-            padding: 24px;
+          .ar-benefit-grid {
+            grid-template-columns: repeat(2, 1fr);
           }
 
-          form {
-            grid-template-columns: 1fr;
-          }
-
-          label {
+          .ar-flow {
             grid-column: auto;
+            overflow-x: auto;
+            justify-content: flex-start;
           }
 
-          .footer {
+          .ar-flow div {
+            min-width: 95px;
+          }
+
+          .ar-phone-wrap {
+            grid-column: auto;
+            grid-row: auto;
+          }
+
+          .ar-showcase-grid {
             grid-template-columns: 1fr 1fr;
-            padding-left: 20px;
-            padding-right: 20px;
+          }
+
+          .ar-image-large,
+          .ar-image-wide {
+            grid-column: span 2;
           }
         }
 
-        @media (max-width: 640px) {
-          .navCta {
-            padding: 11px 12px;
-            font-size: 10px;
+        @media (max-width: 720px) {
+          .ar-nav {
+            width: min(100% - 24px, 1180px);
+            height: 74px;
           }
 
-          .heroActions {
-            flex-direction: column;
+          .ar-brand {
+            min-width: 0;
           }
 
-          .primaryBtn,
-          .secondaryBtn {
+          .ar-brand div:last-child {
+            display: none;
+          }
+
+          .ar-nav-cta {
+            min-height: 40px;
+            padding: 0 14px;
+            font-size: 12px;
+          }
+
+          .ar-hero,
+          .ar-section,
+          .ar-footer {
+            width: min(100% - 24px, 1180px);
+          }
+
+          .ar-hero {
+            gap: 34px;
+            padding: 38px 0 56px;
+          }
+
+          .ar-hero h1 {
+            font-size: 48px;
+          }
+
+          .ar-lead {
+            font-size: 16px;
+          }
+
+          .ar-hero-actions {
+            align-items: stretch;
+          }
+
+          .ar-btn {
             width: 100%;
           }
 
-          .miniGrid,
-          .intelGrid {
+          .ar-trust-row {
             grid-template-columns: 1fr;
           }
 
-          .flow,
-          .proof,
-          .radarSection,
-          .advantages,
-          .access {
-            padding-left: 20px;
-            padding-right: 20px;
+          .ar-dashboard-shell {
+            min-height: auto;
+            border-radius: 26px;
+            padding: 12px;
           }
 
-          .proofCard {
-            min-height: 480px;
-          }
-
-          .footer {
+          .ar-dashboard-grid {
             grid-template-columns: 1fr;
+            min-height: auto;
+          }
+
+          .ar-side-menu {
+            display: none;
+          }
+
+          .ar-map-panel,
+          .ar-opportunity-panel {
+            border-radius: 22px;
+          }
+
+          .ar-italy-placeholder {
+            height: 230px;
+          }
+
+          .ar-section {
+            padding: 64px 0;
+          }
+
+          .ar-benefit-grid {
+            grid-template-columns: 1fr;
+          }
+
+          .ar-benefit-grid article {
+            min-height: auto;
+          }
+
+          .ar-flow {
+            padding: 18px;
+            border-radius: 24px;
+          }
+
+          .ar-phone {
+            width: 100%;
+            max-width: 320px;
+          }
+
+          .ar-dossier-visual {
+            min-height: 520px;
+          }
+
+          .ar-card-main {
+            width: calc(100% - 44px);
+            left: 22px;
+            top: 30px;
+          }
+
+          .ar-card-pdf {
+            width: 210px;
+            right: 22px;
+            top: 270px;
+          }
+
+          .ar-showcase-grid,
+          .ar-metrics {
+            grid-template-columns: 1fr;
+          }
+
+          .ar-image-large,
+          .ar-image-wide {
+            grid-column: auto;
+            min-height: 260px;
+          }
+
+          .ar-why {
+            gap: 28px;
+          }
+
+          .ar-cta-card {
+            padding: 28px;
+            min-height: 340px;
+          }
+
+          .ar-footer {
+            flex-direction: column;
+          }
+
+          .ar-footer-cols {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 28px;
           }
         }
       `}</style>
