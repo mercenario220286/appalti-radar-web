@@ -1282,8 +1282,7 @@ const mobileStyles = {
   page: {
     width: "100vw",
     minHeight: "100svh",
-    background:
-      "radial-gradient(circle at 50% 0%, rgba(80,120,255,0.10), transparent 34%), radial-gradient(circle at 85% 18%, rgba(139,92,246,0.10), transparent 28%), #000000",
+    background: "#000000",
     color: "#ffffff",
     fontFamily: "Arial, sans-serif",
     display: "flex",
@@ -1315,7 +1314,7 @@ const mobileStyles = {
     display: "block",
     margin: "0 auto 12px auto",
     background: "transparent",
-    filter: "drop-shadow(0 0 16px rgba(59,130,246,0.25))"
+    filter: "none"
   },
 
   kicker: {
