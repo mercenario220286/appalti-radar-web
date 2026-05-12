@@ -40,12 +40,79 @@ function getDocUrl(doc) {
   return null;
 }
 
-function MobileBlocked({ g, loadError, cig }) {
-  const cleanCig = String(cig || g?.cig || "").trim().toUpperCase();
 
-  const reportUrl = cleanCig
-    ? "/report/report_" + cleanCig + ".pdf"
-    : null;
+function getMobileDocumentiLink(g) {
+  return firstValue(
+    g.documenti_link,
+    g.documentiLink,
+    g.link_documenti,
+    g.documenti_di_gara_link,
+    g.documentiLinkUfficiale,
+    null
+  );
+}
+
+function resolveDocumentLink(g) {
+  const url = getMobileDocumentiLink(g);
+
+  const ente = String(
+    firstValue(
+      g.ente_appaltante,
+      g.ente,
+      g.stazione_appaltante,
+      "",
+      ""
+    ) || ""
+  ).toLowerCase();
+
+  if (ente.includes("anas")) {
+    return {
+      type: "ANAS_POST_LIVE",
+      url: null,
+      label: null
+    };
+  }
+
+  if (!url) {
+    return {
+      type: "ASSENTE",
+      url: null,
+      label: null
+    };
+  }
+
+  const cleanUrl = String(url).trim();
+  const lower = cleanUrl.toLowerCase();
+
+  if (
+    lower.includes("tuttogare") ||
+    lower.includes("asmecomm") ||
+    lower.includes("traspare") ||
+    lower.includes("acquistitelematici") ||
+    lower.includes("albofornitori") ||
+    lower.includes("portaleappalti")
+  ) {
+    return {
+      type: "DOCUMENTI_PROBABILI",
+      url: cleanUrl,
+      label: "Apri pagina documentale gara"
+    };
+  }
+
+  return {
+    type: "PAGINA_SORGENTE",
+    url: cleanUrl,
+    label: "Apri pagina sorgente gara"
+  };
+}
+
+
+
+
+function MobileBlocked({ g, loadError, cig }) {
+  const cleanCig = String(cig || g?.cig || "")
+    .trim()
+    .toUpperCase();
 
   return (
     <main style={mobileStyles.page}>
@@ -115,60 +182,48 @@ function MobileBlocked({ g, loadError, cig }) {
               <a
                 href={anacLink(g.cig)}
                 target="_blank"
+                rel="noopener noreferrer"
                 style={mobileStyles.mobileActionSecondary}
               >
                 Apri ANAC
               </a>
 
-              {g.documentiLink && (
-                <a
-                  href={g.documentiLink}
-                  target="_blank"
-                  style={mobileStyles.mobileActionSecondary}
-                >
-                  Documentazione ufficiale
-                </a>
-              )}
+              {(() => {
+                const doc = resolveDocumentLink(g);
+
+                if (!doc || !doc.url || !doc.label) {
+                  return null;
+                }
+
+                return (
+                  <a
+                    href={doc.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={mobileStyles.mobileActionSecondary}
+                  >
+                    {doc.label}
+                  </a>
+                );
+              })()}
 
               <a
-                href={"/report/report_" + cleanCig + ".pdf"}
+                href={"/api/report/" + cleanCig}
                 target="_blank"
+                rel="noopener noreferrer"
                 style={mobileStyles.mobileActionPrimary}
               >
                 Apri report PDF
               </a>
-
-              <a
-                href={"/json/gara_" + cleanCig + ".json"}
-                download={"gara_" + cleanCig + ".json"}
-                style={mobileStyles.mobileActionSecondary}
-              >
-                JSON gara
-              </a>
             </div>
-
-            {g.motivi && g.motivi.length > 0 && (
-              <div style={mobileStyles.mobileReasons}>
-                <div style={mobileStyles.mobileReasonsTitle}>
-                  Motivi di rilevanza
-                </div>
-
-                {g.motivi.slice(0, 3).map((m, i) => (
-                  <div key={i} style={mobileStyles.mobileReasonLine}>
-                    <span>✓</span>
-                    <b>{m}</b>
-                  </div>
-                ))}
-              </div>
-            )}
 
             <div style={mobileStyles.desktopBox}>
               Dashboard completa disponibile da desktop.
             </div>
 
             <p style={mobileStyles.note}>
-              Da mobile hai la sintesi operativa e le risorse rapide. Da PC trovi
-              mercato, competitor, storico, pressione ribassi e lettura completa.
+              Sintesi mobile essenziale. Analisi completa, mercato,
+              competitor, storico e pressione ribassi disponibili da PC.
             </p>
           </>
         )}
@@ -1226,102 +1281,100 @@ const reportUrl =
 
 const mobileStyles = {
   page: {
-  width: "100vw",
-  minHeight: "100dvh",
-  background: "#000000",
-  color: "#ffffff",
-  fontFamily: "Arial, sans-serif",
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-  padding: "28px",
-  boxSizing: "border-box",
-  overflowY: "auto"
-},
+    width: "100vw",
+    minHeight: "100svh",
+    background:
+      "radial-gradient(circle at 50% 0%, rgba(80,120,255,0.10), transparent 34%), radial-gradient(circle at 85% 18%, rgba(139,92,246,0.10), transparent 28%), #000000",
+    color: "#ffffff",
+    fontFamily: "Arial, sans-serif",
+    display: "flex",
+    alignItems: "flex-start",
+    justifyContent: "center",
+    padding: "18px 18px 28px 18px",
+    boxSizing: "border-box",
+    overflowY: "auto"
+  },
 
-card: {
-  width: "100%",
-  maxWidth: "420px",
-  border: "1px solid rgba(196,181,253,0.22)",
-  borderRadius: "22px",
-  background: "#000000",
-  boxShadow: "0 18px 50px rgba(0,0,0,0.75), 0 0 30px rgba(139,92,246,0.14)",
-  padding: "30px 24px",
-  boxSizing: "border-box",
-  textAlign: "center"
-},
+  card: {
+    width: "100%",
+    maxWidth: "420px",
+    marginTop: "18px",
+    border: "1px solid rgba(196,181,253,0.22)",
+    borderRadius: "22px",
+    background:
+      "linear-gradient(180deg, rgba(8,8,14,0.96), rgba(0,0,0,1))",
+    boxShadow:
+      "0 18px 50px rgba(0,0,0,0.75), 0 0 34px rgba(139,92,246,0.13), inset 0 0 18px rgba(255,255,255,0.018)",
+    padding: "22px 18px",
+    boxSizing: "border-box",
+    textAlign: "center"
+  },
 
-logo: {
-  width: "92px",
-  height: "92px",
-  objectFit: "contain",
-  display: "block",
-  margin: "0 auto 18px auto",
-  background: "#000000"
-},
+  logo: {
+    width: "74px",
+    height: "74px",
+    objectFit: "contain",
+    display: "block",
+    margin: "0 auto 12px auto",
+    background: "#000000",
+    filter: "drop-shadow(0 0 16px rgba(59,130,246,0.25))"
+  },
 
   kicker: {
     color: "rgba(196,181,253,0.92)",
-    fontSize: "11px",
+    fontSize: "10px",
     fontWeight: "900",
-    letterSpacing: "2px",
-    marginBottom: "10px"
+    letterSpacing: "2.4px",
+    marginBottom: "12px"
   },
 
   title: {
-    margin: "0 0 16px 0",
+    margin: "0 0 13px 0",
     color: "#ffffff",
-    fontSize: "24px",
-    lineHeight: "1.15",
+    fontSize: "22px",
+    lineHeight: "1.13",
     fontWeight: "900",
-    letterSpacing: "-0.3px"
+    letterSpacing: "-0.35px"
   },
 
   text: {
-    margin: "0 auto 14px auto",
-    color: "rgba(255,255,255,0.72)",
-    fontSize: "15px",
-    lineHeight: "1.55",
+    margin: "0 auto 12px auto",
+    color: "rgba(255,255,255,0.68)",
+    fontSize: "14px",
+    lineHeight: "1.5",
     fontWeight: "500"
   },
 
   textStrong: {
-    margin: "0 auto 20px auto",
-    color: "#ffffff",
-    fontSize: "15px",
-    lineHeight: "1.55",
+    margin: "0 auto 17px auto",
+    color: "rgba(255,255,255,0.92)",
+    fontSize: "14px",
+    lineHeight: "1.52",
     fontWeight: "800"
-  },
-
-  note: {
-    borderTop: "1px solid rgba(255,255,255,0.08)",
-    paddingTop: "16px",
-    color: "rgba(255,255,255,0.52)",
-    fontSize: "12px",
-    lineHeight: "1.45",
-    fontWeight: "650"
   },
 
   scoreRow: {
     display: "flex",
     justifyContent: "center",
     gap: "8px",
-    marginBottom: "14px"
+    marginBottom: "14px",
+    flexWrap: "wrap"
   },
 
   scoreBadge: {
-    padding: "7px 10px",
+    padding: "7px 11px",
     borderRadius: "999px",
     background: "rgba(34,255,136,0.10)",
     border: "1px solid rgba(34,255,136,0.28)",
     color: "#22ff88",
     fontSize: "11px",
     fontWeight: "900",
-    letterSpacing: "0.6px"
+    letterSpacing: "0.6px",
+    boxShadow: "0 0 16px rgba(34,255,136,0.08)"
   },
 
   priorityBadge: {
-    padding: "7px 10px",
+    padding: "7px 11px",
     borderRadius: "999px",
     background: "rgba(139,92,246,0.14)",
     border: "1px solid rgba(196,181,253,0.25)",
@@ -1332,11 +1385,11 @@ logo: {
   },
 
   infoBox: {
-    marginTop: "18px",
-    marginBottom: "18px",
+    marginTop: "16px",
+    marginBottom: "16px",
     border: "1px solid rgba(255,255,255,0.08)",
     borderRadius: "16px",
-    background: "rgba(255,255,255,0.035)",
+    background: "rgba(255,255,255,0.028)",
     overflow: "hidden"
   },
 
@@ -1344,33 +1397,20 @@ logo: {
     display: "flex",
     justifyContent: "space-between",
     gap: "14px",
-    padding: "11px 12px",
-    borderBottom: "1px solid rgba(255,255,255,0.06)",
-    color: "rgba(255,255,255,0.68)",
+    padding: "10px 12px",
+    borderBottom: "1px solid rgba(255,255,255,0.055)",
+    color: "rgba(255,255,255,0.64)",
     fontSize: "13px",
-    fontWeight: "700"
-  },
-
-  pdfButton: {
-    display: "block",
-    width: "100%",
-    padding: "14px 16px",
-    borderRadius: "14px",
-    background: "linear-gradient(135deg, rgba(34,255,136,0.95), rgba(16,185,129,0.82))",
-    color: "#00140a",
-    textDecoration: "none",
-    fontSize: "14px",
-    fontWeight: "950",
-    boxSizing: "border-box",
-    marginTop: "18px"
+    fontWeight: "700",
+    textAlign: "left"
   },
 
   mobileActions: {
     display: "grid",
     gridTemplateColumns: "1fr",
     gap: "9px",
-    marginTop: "18px",
-    marginBottom: "16px"
+    marginTop: "16px",
+    marginBottom: "14px"
   },
 
   mobileActionPrimary: {
@@ -1379,13 +1419,15 @@ logo: {
     justifyContent: "center",
     minHeight: "46px",
     borderRadius: "14px",
-    background: "linear-gradient(135deg, rgba(34,255,136,0.95), rgba(16,185,129,0.82))",
+    background:
+      "linear-gradient(135deg, rgba(34,255,136,0.95), rgba(16,185,129,0.82))",
     color: "#00140a",
     textDecoration: "none",
     fontSize: "13px",
     fontWeight: "950",
     letterSpacing: "0.3px",
-    boxSizing: "border-box"
+    boxSizing: "border-box",
+    boxShadow: "0 0 22px rgba(34,255,136,0.16)"
   },
 
   mobileActionSecondary: {
@@ -1394,7 +1436,7 @@ logo: {
     justifyContent: "center",
     minHeight: "42px",
     borderRadius: "13px",
-    background: "rgba(255,255,255,0.035)",
+    background: "rgba(255,255,255,0.026)",
     border: "1px solid rgba(196,181,253,0.20)",
     color: "#ffffff",
     textDecoration: "none",
@@ -1404,46 +1446,26 @@ logo: {
     boxSizing: "border-box"
   },
 
-  mobileReasons: {
-    marginTop: "14px",
-    marginBottom: "14px",
-    padding: "14px",
-    borderRadius: "16px",
-    border: "1px solid rgba(34,255,136,0.18)",
-    background: "rgba(34,255,136,0.045)",
-    textAlign: "left"
-  },
-
-  mobileReasonsTitle: {
-    color: "rgba(255,255,255,0.56)",
-    fontSize: "10px",
-    fontWeight: "950",
-    letterSpacing: "1.1px",
-    textTransform: "uppercase",
-    marginBottom: "10px"
-  },
-
-  mobileReasonLine: {
-    display: "flex",
-    alignItems: "flex-start",
-    gap: "8px",
-    color: "#ffffff",
-    fontSize: "12.5px",
-    lineHeight: "1.35",
-    fontWeight: "850",
-    marginTop: "8px"
-  },
-
   desktopBox: {
-    marginTop: "14px",
-    padding: "13px 14px",
+    marginTop: "13px",
+    padding: "12px 14px",
     borderRadius: "14px",
     border: "1px solid rgba(196,181,253,0.20)",
-    background: "rgba(139,92,246,0.10)",
+    background: "rgba(139,92,246,0.09)",
     color: "#ffffff",
-    fontSize: "13px",
+    fontSize: "12.5px",
     fontWeight: "850",
     lineHeight: "1.4"
+  },
+
+  note: {
+    borderTop: "1px solid rgba(255,255,255,0.07)",
+    marginTop: "14px",
+    paddingTop: "13px",
+    color: "rgba(255,255,255,0.48)",
+    fontSize: "11.5px",
+    lineHeight: "1.45",
+    fontWeight: "650"
   }
 };
 
