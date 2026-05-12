@@ -106,9 +106,6 @@ function resolveDocumentLink(g) {
   };
 }
 
-
-
-
 function MobileBlocked({ g, loadError, cig }) {
   const cleanCig = String(cig || g?.cig || "")
     .trim()
@@ -1298,7 +1295,7 @@ const mobileStyles = {
   card: {
     width: "100%",
     maxWidth: "420px",
-    marginTop: "18px",
+    marginTop: "6px",
     border: "1px solid rgba(196,181,253,0.22)",
     borderRadius: "22px",
     background:
@@ -1331,8 +1328,8 @@ const mobileStyles = {
   title: {
     margin: "0 0 13px 0",
     color: "#ffffff",
-    fontSize: "22px",
-    lineHeight: "1.13",
+    fontSize: "20px",
+    lineHeight: "1.18",
     fontWeight: "900",
     letterSpacing: "-0.35px"
   },
@@ -1346,7 +1343,7 @@ const mobileStyles = {
   },
 
   textStrong: {
-    margin: "0 auto 17px auto",
+    margin: "0 auto 14px auto",
     color: "rgba(255,255,255,0.92)",
     fontSize: "14px",
     lineHeight: "1.52",
@@ -1386,7 +1383,7 @@ const mobileStyles = {
 
   infoBox: {
     marginTop: "16px",
-    marginBottom: "16px",
+    marginBottom: "14px",
     border: "1px solid rgba(255,255,255,0.08)",
     borderRadius: "16px",
     background: "rgba(255,255,255,0.028)",
@@ -1408,26 +1405,9 @@ const mobileStyles = {
   mobileActions: {
     display: "grid",
     gridTemplateColumns: "1fr",
-    gap: "9px",
+    gap: "8px",
     marginTop: "16px",
     marginBottom: "14px"
-  },
-
-  mobileActionPrimary: {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    minHeight: "46px",
-    borderRadius: "14px",
-    background:
-      "linear-gradient(135deg, rgba(34,255,136,0.95), rgba(16,185,129,0.82))",
-    color: "#00140a",
-    textDecoration: "none",
-    fontSize: "13px",
-    fontWeight: "950",
-    letterSpacing: "0.3px",
-    boxSizing: "border-box",
-    boxShadow: "0 0 22px rgba(34,255,136,0.16)"
   },
 
   mobileActionSecondary: {
@@ -1443,7 +1423,8 @@ const mobileStyles = {
     fontSize: "12px",
     fontWeight: "900",
     letterSpacing: "0.3px",
-    boxSizing: "border-box"
+    boxSizing: "border-box",
+    transition: "all 0.2s ease"
   },
 
   desktopBox: {
@@ -1451,10 +1432,10 @@ const mobileStyles = {
     padding: "12px 14px",
     borderRadius: "14px",
     border: "1px solid rgba(196,181,253,0.20)",
-    background: "rgba(139,92,246,0.09)",
+    background: "rgba(139,92,246,0.06)",
     color: "#ffffff",
     fontSize: "12.5px",
-    fontWeight: "850",
+    fontWeight: "800",
     lineHeight: "1.4"
   },
 
