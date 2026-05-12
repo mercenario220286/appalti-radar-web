@@ -111,13 +111,64 @@ function MobileBlocked({ g, loadError, cig }) {
               </div>
             </div>
 
+            <div style={mobileStyles.mobileActions}>
+              <a
+                href={anacLink(g.cig)}
+                target="_blank"
+                style={mobileStyles.mobileActionSecondary}
+              >
+                Apri ANAC
+              </a>
+
+              {g.documentiLink && (
+                <a
+                  href={g.documentiLink}
+                  target="_blank"
+                  style={mobileStyles.mobileActionSecondary}
+                >
+                  Documentazione ufficiale
+                </a>
+              )}
+
+              <a
+                href={"/report/report_" + cleanCig + ".pdf"}
+                target="_blank"
+                style={mobileStyles.mobileActionPrimary}
+              >
+                Apri report PDF
+              </a>
+
+              <a
+                href={"/json/gara_" + cleanCig + ".json"}
+                download={"gara_" + cleanCig + ".json"}
+                style={mobileStyles.mobileActionSecondary}
+              >
+                JSON gara
+              </a>
+            </div>
+
+            {g.motivi && g.motivi.length > 0 && (
+              <div style={mobileStyles.mobileReasons}>
+                <div style={mobileStyles.mobileReasonsTitle}>
+                  Motivi di rilevanza
+                </div>
+
+                {g.motivi.slice(0, 3).map((m, i) => (
+                  <div key={i} style={mobileStyles.mobileReasonLine}>
+                    <span>✓</span>
+                    <b>{m}</b>
+                  </div>
+                ))}
+              </div>
+            )}
+
             <div style={mobileStyles.desktopBox}>
               Dashboard completa disponibile da desktop.
             </div>
 
             <p style={mobileStyles.note}>
-              Da mobile vedi la sintesi operativa. Da PC trovi mercato, competitor,
-              storico, pressione ribassi e lettura completa.
+              Da mobile hai la sintesi operativa e le risorse rapide. Da PC trovi
+              mercato, competitor, storico, pressione ribassi e lettura completa.
             </p>
           </>
         )}
@@ -1312,6 +1363,75 @@ logo: {
     fontWeight: "950",
     boxSizing: "border-box",
     marginTop: "18px"
+  },
+
+  mobileActions: {
+    display: "grid",
+    gridTemplateColumns: "1fr",
+    gap: "9px",
+    marginTop: "18px",
+    marginBottom: "16px"
+  },
+
+  mobileActionPrimary: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    minHeight: "46px",
+    borderRadius: "14px",
+    background: "linear-gradient(135deg, rgba(34,255,136,0.95), rgba(16,185,129,0.82))",
+    color: "#00140a",
+    textDecoration: "none",
+    fontSize: "13px",
+    fontWeight: "950",
+    letterSpacing: "0.3px",
+    boxSizing: "border-box"
+  },
+
+  mobileActionSecondary: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    minHeight: "42px",
+    borderRadius: "13px",
+    background: "rgba(255,255,255,0.035)",
+    border: "1px solid rgba(196,181,253,0.20)",
+    color: "#ffffff",
+    textDecoration: "none",
+    fontSize: "12px",
+    fontWeight: "900",
+    letterSpacing: "0.3px",
+    boxSizing: "border-box"
+  },
+
+  mobileReasons: {
+    marginTop: "14px",
+    marginBottom: "14px",
+    padding: "14px",
+    borderRadius: "16px",
+    border: "1px solid rgba(34,255,136,0.18)",
+    background: "rgba(34,255,136,0.045)",
+    textAlign: "left"
+  },
+
+  mobileReasonsTitle: {
+    color: "rgba(255,255,255,0.56)",
+    fontSize: "10px",
+    fontWeight: "950",
+    letterSpacing: "1.1px",
+    textTransform: "uppercase",
+    marginBottom: "10px"
+  },
+
+  mobileReasonLine: {
+    display: "flex",
+    alignItems: "flex-start",
+    gap: "8px",
+    color: "#ffffff",
+    fontSize: "12.5px",
+    lineHeight: "1.35",
+    fontWeight: "850",
+    marginTop: "8px"
   },
 
   desktopBox: {
