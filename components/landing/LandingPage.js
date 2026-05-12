@@ -428,17 +428,33 @@ export default function LandingPage() {
           scroll-behavior: smooth;
         }
 
-        body {
-          margin: 0;
-          background: #000;
-          color: #f6f7ff;
-        }
+        html,
+body {
+  margin: 0 !important;
+  padding: 0 !important;
+  width: 100% !important;
+  min-height: 100% !important;
+  height: auto !important;
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+  background: #000 !important;
+  color: #f6f7ff;
+  -webkit-overflow-scrolling: touch;
+}
+
+body {
+  position: static !important;
+  touch-action: auto !important;
+}
 
         .ar-page {
-          min-height: 100vh;
-          overflow-x: hidden;
+  width: 100%;
+  min-height: 100vh;
+  height: auto;
+  overflow-x: hidden;
+  overflow-y: visible;
           background:
-            radial-gradient(circle at 50% 0%, rgba(103, 69, 255, 0.22), transparent 34rem),
+            radial-gradient(circle at 50% 0%, rgba(103, 69, 255, 0.11), transparent 34rem),
             radial-gradient(circle at 90% 15%, rgba(0, 116, 255, 0.14), transparent 30rem),
             linear-gradient(180deg, #000 0%, #02030a 42%, #000 100%);
           font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
