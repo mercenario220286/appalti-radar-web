@@ -1300,8 +1300,7 @@ const mobileStyles = {
     marginTop: "6px",
     border: "1px solid rgba(196,181,253,0.22)",
     borderRadius: "22px",
-    background:
-      "linear-gradient(180deg, rgba(2,2,8,0.98) 0%, rgba(0,0,0,1) 100%)",
+    background: "#000000",
     boxShadow:
       "0 18px 50px rgba(0,0,0,0.75), 0 0 34px rgba(139,92,246,0.13), inset 0 0 18px rgba(255,255,255,0.018)",
     padding: "22px 18px",
@@ -1315,7 +1314,7 @@ const mobileStyles = {
     objectFit: "contain",
     display: "block",
     margin: "0 auto 12px auto",
-    background: "#000000",
+    background: "transparent",
     filter: "drop-shadow(0 0 16px rgba(59,130,246,0.25))"
   },
 
