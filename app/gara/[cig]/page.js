@@ -41,6 +41,17 @@ function getDocUrl(doc) {
 }
 
 
+function firstValue(a, b, c, d, e) {
+  if (a !== undefined && a !== null && a !== "") return a;
+  if (b !== undefined && b !== null && b !== "") return b;
+  if (c !== undefined && c !== null && c !== "") return c;
+  if (d !== undefined && d !== null && d !== "") return d;
+  if (e !== undefined && e !== null && e !== "") return e;
+
+  return null;
+}
+
+
 function getMobileDocumentiLink(g) {
   return firstValue(
     g.documenti_link,
@@ -203,15 +214,6 @@ function MobileBlocked({ g, loadError, cig }) {
                   </a>
                 );
               })()}
-
-              <a
-                href={"/api/report/" + cleanCig}
-                target="_blank"
-                rel="noopener noreferrer"
-                style={mobileStyles.mobileActionPrimary}
-              >
-                Apri report PDF
-              </a>
             </div>
 
             <div style={mobileStyles.desktopBox}>
