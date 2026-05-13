@@ -22,7 +22,7 @@ export default function Home() {
           maxWidth: "860px",
           padding: "clamp(34px, 7vw, 68px) clamp(22px, 6vw, 68px)",
           borderRadius: "34px",
-          background: "#000",
+          background: "#020202",
           border: "1px solid rgba(255,255,255,0.06)",
           boxShadow: "0 40px 120px rgba(0,0,0,0.92)",
           position: "relative"
@@ -34,8 +34,7 @@ export default function Home() {
             inset: 0,
             borderRadius: "34px",
             pointerEvents: "none",
-            background:
-              "radial-gradient(circle at top, rgba(96,70,255,0.12), transparent 38%), radial-gradient(circle at bottom right, rgba(0,102,255,0.08), transparent 34%)"
+            background: "#020202"
           }}
         />
 
@@ -50,7 +49,7 @@ export default function Home() {
               width: "clamp(120px, 18vw, 150px)",
               height: "clamp(120px, 18vw, 150px)",
               margin: "0 auto 34px",
-              background: "#000",
+              background: "#020202",
               overflow: "hidden",
               display: "flex",
               alignItems: "center",
